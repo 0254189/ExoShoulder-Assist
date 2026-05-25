@@ -34,7 +34,7 @@ Basada en el diseño open-source de [Berkeley Humanoid Lite](https://lite.berkel
 
 ## Póster
 
-Disponible en línea en: [https://0254189.github.io/ExoShoulder-Assist](https://0254189.github.io/ExoShoulder-Assist/)
+Disponible en línea en: (https://0254189.github.io/ExoShoulder-Assist/)
 
 ## Autor
 
