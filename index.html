@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Póster — ExoShoulder Assist · Universidad Panamericana</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #FFFFFF;
+    --navy2:   #F8F5EF;
+    --navy3:   #F0EBE0;
+    --teal:    #A07830;
+    --teal2:   #8A6520;
+    --gold:    #A07830;
+    --sky:     #5C4010;
+    --lavender:#7A5C28;
+    --white:   #1A1208;
+    --muted:   #6B5535;
+    --border:  #D4B87A;
+    --card:    #FAF6EE;
+    --font-h:  'Playfair Display', Georgia, serif;
+    --font-b:  'Source Sans 3', sans-serif;
+    --font-m:  'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #C8B08A;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 32px 0;
+    font-family: var(--font-b);
+  }
+
+  .poster {
+    width: 841px;
+    min-height: 1189px;
+    background: var(--navy);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 120px rgba(100,70,20,0.35);
+  }
+
+  /* ── decorative ── */
+  .deco-line-left {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 5px; background: var(--teal); z-index: 10;
+  }
+  .deco-dots {
+    position: absolute; top: 0; right: 0; width: 260px; height: 260px;
+    background-image: radial-gradient(circle, rgba(160,120,48,0.15) 1px, transparent 1px);
+    background-size: 18px 18px;
+    pointer-events: none;
+  }
+  .deco-circle {
+    position: absolute; right: -80px; bottom: 120px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(160,120,48,0.12);
+    pointer-events: none;
+  }
+  .deco-circle2 {
+    position: absolute; right: -40px; bottom: 80px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(160,120,48,0.18);
+    pointer-events: none;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 28px 24px 22px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .header-tag {
+    font-family: var(--font-m);
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: rgba(160,120,48,0.08);
+    border: 1px solid rgba(160,120,48,0.3);
+    display: inline-block;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: var(--font-h);
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #1A1208;
+    max-width: 520px;
+  }
+  .header-title em { color: var(--teal); font-style: normal; }
+  .header-authors {
+    margin-top: 10px;
+    font-size: 9.5px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .header-authors strong { color: var(--sky); font-weight: 600; }
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    padding-top: 4px;
+  }
+  .up-logo-box {
+    padding: 12px 18px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    gap: 2px;
+  }
+  .up-logo-tree { font-size: 22px; line-height: 1; }
+  .up-logo-text {
+    font-family: var(--font-h);
+    font-size: 5.5px;
+    font-weight: 700;
+    color: #D4B87A;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .up-logo-sub {
+    font-family: var(--font-b);
+    font-size: 4.5px;
+    color: #D4B87A;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .header-program { font-size: 8px; color: var(--muted); text-align: right; line-height: 1.5; }
+
+  /* ── MAIN GRID ── */
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  /* ── SECTION SHELLS ── */
+  .section {
+    padding: 16px 18px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .section:nth-child(even) { border-right: none; }
+  .section-full {
+    grid-column: 1 / -1;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }   
+
+  .sec-label {
+    font-family: var(--font-m);
+    font-size: 7px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+  .sec-title {
+    font-family: var(--font-h);
+    font-size: 13px;
+    font-weight: 700;
+    color: #1A1208;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .body-text {
+    font-size: 8.5px;
+    line-height: 1.65;
+    color: #3D2C10;
+    font-weight: 300;
+  }
+  .body-text p { margin-bottom: 7px; text-align:justify;}
+  .body-text p:last-child { margin-bottom: 0; }
+
+  .intro-highlight {
+    background: rgba(160,120,48,0.07);
+    border-left: 3px solid var(--teal);
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    font-size: 9px;
+    font-style: italic;
+    color: #3D2C10;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  .objetivo-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(160,120,48,0.08);
+    border: 1px solid rgba(160,120,48,0.3);
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    font-size: 7.5px;
+    color: var(--gold);
+    font-family: var(--font-m);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── ARCHITECTURE ── */
+  .arch-section {
+    background: #F3ECD8;
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+    grid-column: 1 / -1;
+  }
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 270px 1fr;
+    gap: 14px;
+    align-items: start;
+    margin-top: 5px;
+  }
+  .arch-diagram {
+    background: #FAF6EE;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  } 
+
+  .chain-cards { display: flex; flex-direction: column; gap: 7px; }
+  .chain-card {
+    background: #FAF6EE;
+    border: 1px solid var(--border);
+    border-left: 3px solid;
+    padding: 7px 9px;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 7px;
+    align-items: start;
+  }
+  .chain-badge {
+    font-family: var(--font-h);
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 1px;
+  }
+  .chain-name { font-size: 8.5px; font-weight: 700; margin-bottom: 2px; }
+  .chain-desc { font-size: 7px; color: var(--muted); line-height: 1.5; }
+
+  .params-table {
+    background: #FAF6EE;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    width: 100%;
+    max-width: 250px;
+  }
+  .params-table .t-head {
+    background: rgba(160,120,48,0.12);
+    display: grid;
+    grid-template-columns: 60px 60px 1fr;
+    padding: 5px 8px;
+    font-family: var(--font-m);
+    font-size: 6.5px;
+    color: var(--teal);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .params-table .t-row {
+    display: grid;
+    grid-template-columns: 60px 60px 1fr;
+    padding: 5px 8px;
+    font-size: 7.5px;
+    border-bottom: 1px solid rgba(160,120,48,0.2);
+    align-items: center;
+  }
+  .params-table .t-row:last-child { border-bottom: none; }
+  .t-param { font-family: var(--font-m); font-weight: 600; color: var(--sky); }
+  .t-val { font-family: var(--font-m); color: var(--gold); }
+  .t-desc { color: var(--muted); font-size: 7px; line-height: 1.4; }
+
+  /* ── STEPS ── */
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .steps-list li {
+    display: flex; gap: 8px; align-items: center;
+    font-size: 8px; color: #3D2C10; line-height: 1.5;
+  }
+  .step-n {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: rgba(122,92,40,0.1);
+    border: 1px solid var(--lavender);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-m); font-size: 7px; color: var(--lavender);
+    flex-shrink: 0;
+  }
+
+  /* ── RESULTS ── */
+  .results-section {
+    grid-column: 1 / -1;
+    background: #F6EFE0;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+  }
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .metric-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-top: 3px solid;
+    padding: 10px 8px 8px;
+    text-align: center;
+  }
+  .metric-num {
+    font-family: var(--font-h);
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .metric-unit { font-family: var(--font-m); font-size: 7.5px; color: var(--muted); margin-bottom: 4px; }
+  .metric-label { font-size: 7px; color: var(--muted); line-height: 1.4; }
+
+  .validation-table { width: 100%; border-collapse: collapse; font-size: 7.5px; }
+  .validation-table th {
+    background: rgba(160,120,48,0.1);
+    color: var(--teal);
+    font-family: var(--font-m);
+    font-size: 6.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .validation-table td {
+    padding: 5px 8px;
+    border-bottom: 1px solid rgba(160,120,48,0.2);
+    color: #3D2C10;
+    font-family: var(--font-m);
+  }
+  .validation-table td:first-child { color: var(--sky); font-weight: 600; }
+  .validation-table td.ok { color: var(--teal); font-weight: 600; }
+  .validation-table tr:last-child td { border-bottom: none; }
+
+  /* ── PHOTO + CONCLUSIONES ── */
+  .photo-section {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .photo-box {
+    background: #FAF6EE;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    gap: 8px;
+  }
+  .photo-box:last-of-type { border-right: none; }
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #F0EBE0;
+    border: 1px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 7.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .photo-caption {
+    font-size: 7px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  .concl-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+  .concl-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .concl-text { font-size: 8px; color: #3D2C10; line-height: 1.55; }
+  .future-box {
+    background: rgba(160,120,48,0.06);
+    border: 1px solid rgba(160,120,48,0.25);
+    border-left: 3px solid var(--gold);
+    padding: 7px 10px;
+    margin-top: 8px;
+    font-size: 7.5px;
+    color: #3D2C10;
+    line-height: 1.55;
+  }
+  .future-box .fut-label {
+    font-size: 6.5px; font-family: var(--font-m);
+    color: var(--gold); letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+
+  /* ── FOOTER ── */
+  .footer-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+    background: #F0EBE0;
+  }
+  .refs { font-size: 7px; color: var(--muted); line-height: 1.6; }
+  .refs span { color: var(--sky); }
+  .qr-box {
+    width: 60px; height: 60px;
+    border-radius: 2px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .flow-box {
+    background: #FAF6EE;
+    border: 1px solid var(--border);
+    padding: 5px 7px;
+    font-size: 7px;
+    font-family: var(--font-m);
+    color: var(--sky);
+    text-align: center;
+    flex: 1;
+    line-height: 1.4;
+  }
+  .flow-box.power { border-left: 3px solid #C0392B; color: #7A2010; }
+  .flow-box.ctrl  { border-left: 3px solid var(--teal); color: var(--sky); }
+  .flow-box.sense { border-left: 3px solid var(--lavender); color: var(--lavender); }
+  .flow-box.act   { border-left: 3px solid #5C8040; color: #3D5828; }
+  .flow-arrow {
+    font-size: 8px; color: var(--muted); flex-shrink: 0;
+  }
+  .flow-label {
+    font-size: 6px; font-family: var(--font-m); color: var(--muted);
+    letter-spacing: 0.5px; text-align: center; margin-bottom: 2px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- Decorative -->
+  <div class="deco-line-left"></div>
+  <div class="deco-dots"></div>
+  <div class="deco-circle"></div>
+  <div class="deco-circle2"></div>
+
+  <!-- ══════════════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════════════ -->
+  <div class="header">
+    <div>
+      <div class="header-tag">Ingeniería Mecatrónica · Proyecto Mecatrónico </div>
+      <h1 class="header-title">
+        <em>ExoShoulder Assist:</em><br>
+        Exoesqueleto de Asistencia para Hombro<br>
+      </h1>
+      <div class="header-authors">
+        <strong>Iván E. Gutiérrez Orozco</strong>
+        &nbsp;·&nbsp; Ingeniería Mecatrónica &nbsp;·&nbsp; Universidad Panamericana
+      </div>
+      <div class="header-authors" style="margin-top:4px;font-size:8px;">
+        Asesores: Oscar Sánchez Barba &nbsp;·&nbsp; Zyanya Orozco
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="up-logo-box">
+        <div class="up-logo-tree">
+           <img src="Images\LOGO.png" alt="UP Logo" style="width:200px;height:100px;object-fit:contain;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       MAIN GRID
+  ══════════════════════════════════════════════════ -->
+  <div class="main">
+
+    <!-- ── 01 PLANTEAMIENTO DEL PROBLEMA ── -->
+    <div class="section">
+      <div class="sec-label">01 &nbsp; Planteamiento del Problema</div>
+      <div class="intro-highlight">
+        Las personas con debilidad muscular en el hombro no pueden realizar actividades cotidianas básicas como alcanzar objetos, comer o manipular herramientas, lo que reduce progresivamente su autonomía.
+      </div>
+      <div class="body-text">
+        <p>Los exoesqueletos comerciales disponibles superan los <strong>$30,000 USD</strong> y cubren múltiples articulaciones, resultando sobredimensionados para quienes únicamente requieren asistencia en el hombro.</p>
+        <p>Actualmente <strong>no existe una solución portátil, de bajo costo y especializada</strong> en la articulación del hombro orientada al uso cotidiano. Este vacío tecnológico justifica el desarrollo del ExoShoulder Assist como propuesta de prototipo funcional accesible.</p>
+      </div>
+    </div>
+
+    <!-- ── 02 OBJETIVO ── -->
+    <div class="section">
+      <div class="sec-label">02 &nbsp; Objetivo General</div>
+      
+      <div class="body-text">
+        <p>Desarrollar un prototipo funcional de exoesqueleto de asistencia para hombro, capaz de proporcionar soporte motorizado en la elevación del brazo de <strong>0° a 90°</strong>, mediante un motor eléctrico compacto con un sistema de engranajes que multiplica la fuerza, controlado por una pequeña tarjeta electrónica, con un costo de fabricación menor a <strong>8,000 MXN</strong>.</p>
+      </div>
+      <ul class="steps-list" style="margin-top:8px;">
+        <li>
+          <span class="step-n">→</span>
+          <span>Asistir la <strong style="color:#5C4010">elevación del brazo</strong> (flexión y abducción) con par motorizado controlado</span>
+        </li>
+        <li>
+          <span class="step-n">→</span>
+          <span>Mantener el <strong style="color:#5C4010">peso total</strong> del prototipo por debajo de 4 kg</span>
+        </li>
+        <li>
+          <span class="step-n">→</span>
+          <span>Garantizar <strong style="color:#5C4010">paro de emergencia</strong> funcional en ≤ 1 segundo</span>
+        </li>
+        <li>
+          <span class="step-n">→</span>
+          <span>Fabricación de piezas en <strong style="color:#5C4010">impresión 3D</strong>, sin necesidad de maquinado complejo</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── 03 ARQUITECTURA DEL SISTEMA (full-width) ── -->
+    <div class="section-full arch-section">
+      <div class="sec-label">03 &nbsp; Diseño Mecánico · Arquitectura del Sistema</div>
+
+      <div class="arch-grid">
+
+        <!-- Columna izquierda: dos vistas CAD -->
+        <div style="background:#FAF6EE;border:1px solid var(--border);border-radius:2px;padding:8px;display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:6.5px;font-family:var(--font-m);color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Diseño CAD</div>
+
+          <!-- Vista 1 -->
+          <div style="width:100%;aspect-ratio:auto;background:#F0EBE0;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:4px;font-size:6px;color:var(--muted);text-align:center;">
+            <img src="Images\Vista isométrica del ensamble.png" alt="Vista isométrica del ensamble" style="width:100%;height:100%;object-fit:contain;">
+            <span>Vista isométrica del ensamble</span>  
+          </div>
+
+          <!-- Vista 2 -->
+          <div style="width:100%;aspect-ratio:auto;background:#F0EBE0;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:4px;font-size:6px;color:var(--muted);text-align:center;">
+            <img src="Images\Vista de montaje.png" alt="Vista de montaje" style="width:100%;height:100%;object-fit:contain;">
+            <span>Vista de montaje</span>
+          </div>
+        </div>
+
+        <!-- Columna central: descripción de componentes -->
+        <div class="chain-cards">
+          <div style="font-size:8px;color:rgba(61,44,16,0.85);line-height:1.6;margin-bottom:6 px;text-align:justify;">
+          El sistema funciona en <strong style="color:#1A1208">cadena:</strong> primero, un sensor detecta cuándo el usuario intenta levantar el brazo y mide el ángulo en tiempo real. Esa información llega a una pequeña tarjeta electrónica que decide cuánta fuerza aplicar según el movimiento detectado. Con esa orden, un motor eléctrico entra en acción y, a través de un sistema de engranajes que multiplica su fuerza 15 veces, asiste la elevación del brazo. Todo el sistema cuenta con un botón de emergencia independiente que corta la energía de forma instantánea si algo falla.
+          </div>
+
+          <div class="chain-card" style="border-left-color:var(--sky);">
+            <div class="chain-badge" style="color:var(--sky);">📡</div>
+            <div>
+              <div class="chain-name" style="color:var(--sky);">Sensado — IMU BMI160 (I2C)</div>
+              <div class="chain-desc">Sensor inercial que mide el ángulo y velocidad angular del brazo en tiempo real. Detecta cuándo el usuario intenta elevar el brazo y calcula el ángulo actual del hombro. Se comunica con el ESP32 vía protocolo I2C.</div>
+            </div>
+          </div>
+
+          <div class="chain-card" style="border-left-color:var(--teal);">
+            <div class="chain-badge" style="color:var(--teal);">🧠</div>
+            <div>
+              <div class="chain-name" style="color:var(--teal);">Control — ESP32 + ESC ZTW Beatles G2</div>
+              <div class="chain-desc">Microcontrolador que procesa los datos del sensor y genera una señal de control proporcional al movimiento detectado. Activa la asistencia solo entre 20° y 60° de elevación, limitando la potencia al 30% para mayor seguridad.</div>
+            </div>
+          </div>
+
+          <div class="chain-card" style="border-left-color:#5C8040;">
+            <div class="chain-badge" style="color:#5C8040;">⚙️</div>
+            <div>
+              <div class="chain-name" style="color:#5C8040;">Actuación — BLDC 6354-270KV + Cicloidal 15:1</div>
+              <div class="chain-desc">Motor eléctrico compacto de alta velocidad, acoplado a un sistema de engranajes cicloidales que multiplica la fuerza 15 veces antes de llegar al brazo. Entrega un torque estimado de 2.64 N·m en el eje de salida.</div>
+            </div>
+          </div>
+
+          <div class="chain-card" style="border-left-color:#C0392B;">
+            <div class="chain-badge" style="color:#C0392B;">⚡</div>
+            <div>
+              <div class="chain-name" style="color:#C0392B;">Seguridad — Paro de Emergencia</div>
+              <div class="chain-desc">Interruptor de emergencia en la línea de potencia que corta toda la energía del sistema en ≤ 1 s al accionarse. Un fusible de 40 A protege contra cortocircuitos y sobrecargas eléctricas.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna derecha: diagrama de flujo + tabla de parámetros -->
+        <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <!-- Diagrama de flujo simplificado -->
+          <div style="font-size:7px;color:var(--muted);font-family:var(--font-m);letter-spacing:1px;text-transform:uppercase;">Diagrama de flujo</div>
+          <div style="display:flex;flex-direction:column;gap:3px;background:#FAF6EE;border:1px solid var(--border);padding:8px;border-radius:2px;">
+            <div style="background:#FDE8E4;border:1px solid #E8B4AC;border-left:3px solid #C0392B;padding:5px 7px;font-size:7px;font-family:var(--font-m);color:#7A2010;border-radius:1px;text-align:center;">
+              🔋 Fuente de poder
+            </div>
+
+            <div style="text-align:center;font-size:9px;color:var(--muted);">↓</div>
+
+            <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:3px;align-items:center;">
+              <div style="background:#EAF0E4;border:1px solid #B4CCA8;border-left:3px solid #5C8040;padding:5px 5px;font-size:6.5px;font-family:var(--font-m);color:#3D5828;border-radius:1px;text-align:center;">📡 Sensor</div>
+              <div style="font-size:9px;color:var(--muted);">→</div>
+              <div style="background:#F0EBD8;border:1px solid #D4B87A;border-left:3px solid var(--teal);padding:5px 5px;font-size:6.5px;font-family:var(--font-m);color:var(--sky);border-radius:1px;text-align:center;">🧠 Tarjeta<br>controladora</div>
+            </div>
+
+            <div style="text-align:center;font-size:9px;color:var(--muted);">↓</div>
+
+            <div style="background:#F0EBD8;border:1px solid #D4B87A;border-left:3px solid var(--teal);padding:5px 7px;font-size:7px;font-family:var(--font-m);color:var(--sky);border-radius:1px;text-align:center;">
+              🎛️ Controladora de velocidad
+            </div>
+
+            <div style="text-align:center;font-size:9px;color:var(--muted);">↓</div>
+
+            <div style="background:#EAF0E4;border:1px solid #B4CCA8;border-left:3px solid #5C8040;padding:5px 7px;font-size:7px;font-family:var(--font-m);color:#3D5828;border-radius:1px;text-align:center;">
+              ⚙️ Motores
+            </div>
+
+            <div style="text-align:center;font-size:9px;color:var(--muted);">↓</div>
+
+            <div style="background:rgba(160,120,48,0.12);border:1px solid var(--border);border-left:3px solid var(--gold);padding:5px 7px;font-size:7px;font-family:var(--font-m);color:var(--sky);border-radius:1px;text-align:center;font-weight:600;">
+              💪 Asistencia al brazo
+            </div>
+
+          </div>
+
+          <!-- Tabla de parámetros accesible -->
+          <div>
+          <div style="font-size:7px;color:var(--muted);margin-bottom:6px;font-family:var(--font-m);letter-spacing:1px;text-transform:uppercase;">Parámetros clave</div>
+          <div class="params-table">
+            <div class="t-head">
+              <div>Parámetro</div><div>Valor</div><div>Descripción</div>
+            </div>
+            <div class="t-row">
+              <div class="t-param">KV motor</div>
+              <div class="t-val">270 KV</div>
+              <div class="t-desc">Velocidad sin carga por volt</div>
+            </div>
+            <div class="t-row">
+              <div class="t-param">Reducción</div>
+              <div class="t-val">15:1</div>
+              <div class="t-desc">Relación cicloidal (lóbulos)</div>
+            </div>
+            <div class="t-row">
+              <div class="t-param">τ_salida</div>
+              <div class="t-val">2.64 N·m</div>
+              <div class="t-desc">Par estimado en eje de salida</div>
+            </div>
+            <div class="t-row">
+              <div class="t-param">Voltaje</div>
+              <div class="t-val">24 V</div>
+              <div class="t-desc">Batería 6S Li-ion</div>
+            </div>
+            <div class="t-row">
+              <div class="t-param">Material</div>
+              <div class="t-val">PETG</div>
+              <div class="t-desc">FDM, 35% infill, orientación plana</div>
+            </div>
+            <div class="t-row">
+              <div class="t-param">MAX_PWR</div>
+              <div class="t-val">0.30</div>
+              <div class="t-desc">Throttle máximo permitido</div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── 04 ADAPTACIÓN DEL SISTEMA DE TRANSMISIÓN (full-width) ── -->
+    <div class="section-full" style="background:#F8F5EF;border-bottom:1px solid var(--border);">
+      <div class="sec-label">04 &nbsp; Adaptación del Sistema de Transmisión</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
+
+        <div>
+          <div class="sec-title" style="font-size:11px;">De aeromodelismo a asistencia humana</div>
+          <div class="body-text" style="text-align:justify;">
+            <p>El motor BLDC 6354-270KV es un componente comercial ampliamente utilizado en <strong>drones y aviones a escala</strong>. Su principal ventaja es la combinación de alto rendimiento, bajo peso y bajo costo. Sin embargo, está optimizado para girar muy rápido con poca fuerza — exactamente lo opuesto a lo que requiere un exoesqueleto, donde se necesita fuerza suficiente para mover un brazo humano.</p>
+            <p>Para resolver esta incompatibilidad, se integró una <strong>reducción cicloidal 15:1</strong> que convierte la alta velocidad del motor en el torque necesario para asistir la elevación del brazo.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="sec-title" style="font-size:11px;">Basado en Berkeley Humanoid Lite</div>
+          <div class="body-text" style="text-align:justify;">
+            <p>El diseño de la reducción cicloidal está basado en el proyecto open-source <strong>Berkeley Humanoid Lite</strong> (UC Berkeley), originalmente desarrollado para robots humanoides impresos en 3D. El diseño fue adaptado con tres modificaciones principales:</p>
+          </div>
+          <ul class="steps-list" style="margin-top:6px;">
+            <li>
+              <span class="step-n">1</span>
+              <span>Ajuste al diseño original, principalmente la adaptación del acople al <strong style="color:#5C4010">eje del motor 6354</strong>.</span>
+            </li>
+            <li>
+              <span class="step-n">2</span>
+              <span>Selección de <strong style="color:#5C4010">rodamientos específicos</strong>: 6809-2RS, 6701-2RS y MR106-2RS</span>
+            </li>
+            <li>
+              <span class="step-n">3</span>
+              <span>Optimización de <strong style="color:#5C4010">tolerancias de impresión</strong> en PETG mediante iteración dimensional</span>
+            </li>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── 05 RESULTADOS (full-width) ── -->
+    <div class="results-section">
+      <div class="sec-label">05 &nbsp; Resultados y Criterios de Aceptación</div>
+
+      <div class="metrics-row">
+        <div class="metric-card" style="border-top-color:var(--teal);">
+          <div class="metric-num" style="color:var(--teal);">90°</div>
+          <div class="metric-unit">elevación</div>
+          <div class="metric-label">Rango de movimiento asistido sin bloqueo mecánico</div>
+        </div>
+        <div class="metric-card" style="border-top-color:var(--gold);">
+          <div class="metric-num" style="color:var(--gold);">≤ 1 s</div>
+          <div class="metric-unit">respuesta</div>
+          <div class="metric-label">Tiempo de activación del kill-switch de emergencia</div>
+        </div>
+        <div class="metric-card" style="border-top-color:var(--sky);">
+          <div class="metric-num" style="color:var(--sky);">3 kg</div>
+          <div class="metric-unit">prototipo</div>
+          <div class="metric-label">Peso total ensamblado (25% bajo límite de 4 kg)</div>
+        </div>
+        <div class="metric-card" style="border-top-color:var(--lavender);">
+          <div class="metric-num" style="color:var(--lavender);">~6,300</div>
+          <div class="metric-unit">MXN</div>
+          <div class="metric-label">Costo de fabricación (dentro del presupuesto de 8,000)</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 350px;gap:8px;align-items:start;">
+        <div class="body-text">
+          <p>El prototipo alcanzó los cuatro criterios de aceptación definidos para la versión 0.1. La tolerancia de impresión en PETG requirió <strong>dos iteraciones dimensionales</strong> (nominal → −0.05 mm → ±0.15 mm) para lograr el ajuste correcto de los rodamientos sin adhesivo. El costo de fabricación se mantuvo considerablemente por debajo del presupuesto, lo que confirma la viabilidad económica frente a soluciones comerciales que superan los $30,000 USD.</p>
+          <p>La limitación principal identificada en v0.1 es el par de salida: el motor de 270 KV con reducción 15:1 entrega ~2.64 N·m, mientras que el requisito teórico para asistencia plena ronda los 10 N·m. Este déficit se acepta para el prototipo funcional y se documenta como punto de mejora prioritario en versiones futuras.</p>
+        </div>
+
+        <div>
+          <div style="font-size:7px;color:var(--teal);font-family:var(--font-m);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;">Tabla comparativa</div>
+          <table class="validation-table">
+            <thead>
+              <tr>
+                <th>Métrica</th><th>Esperado</th><th>Obtenido</th><th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rango movimiento</td>
+                <td>0° – 90°</td>
+                <td>0° – 90°</td>
+                <td class="ok">✓ Cumple</td>
+              </tr>
+              <tr>
+                <td>Kill-switch</td>
+                <td>&lt; 1 s</td>
+                <td>≤ 1 s</td>
+                <td class="ok">✓ Cumple</td>
+              </tr>
+              <tr>
+                <td>Peso total</td>
+                <td>&lt; 4 kg</td>
+                <td>3 kg</td>
+                <td class="ok">✓ Cumple</td>
+              </tr>
+              <tr>
+                <td>Costo fabricación</td>
+                <td>&lt; 8,000 MXN</td>
+                <td>~6,300 MXN</td>
+                <td class="ok">✓ Cumple</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FOTO + CONCLUSIONES ── -->
+    <div class="photo-section">
+      <div class="photo-box">
+        <div class="sec-label" style="align-self:flex-start;width:100%;">06 &nbsp; Prototipo</div>
+        <div class="photo-placeholder">
+          <img src="Images\PROTOTIPO.jpeg" alt="Prototipo ExoShoulder Assist v0.1" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>  
+
+      <!-- Conclusiones -->
+      <div style="padding:13px 16px;">
+        <div class="sec-label">07 &nbsp; Conclusiones</div>
+
+        <div class="concl-item">
+          <div class="concl-dot"></div>
+          <div class="concl-text">El prototipo alcanzó un rango de movimiento de <strong style="color:#1A1208">0° a 90°</strong> de elevación del hombro, cumpliendo el criterio de aceptación principal definido para v0.1.</div>
+        </div>
+        <div class="concl-item">
+          <div class="concl-dot"></div>
+          <div class="concl-text">El sistema de paro de emergencia respondió en <strong style="color:var(--gold)">≤ 1 s</strong>, dentro del límite de seguridad establecido, lo que valida la viabilidad del diseño para uso supervisado.</div>
+        </div>
+        <div class="concl-item">
+          <div class="concl-dot"></div>
+          <div class="concl-text">El peso total de <strong style="color:#1A1208">3 kg</strong> —25% por debajo del límite de 4 kg— confirma que la fabricación mayormente en PETG resulta viable para un diseño portátil.</div>
+        </div>
+        <div class="concl-item">
+          <div class="concl-dot"></div>
+          <div class="concl-text">El costo de fabricación de <strong style="color:#1A1208">~6,300 MXN</strong> demuestra la viabilidad económica frente a soluciones comerciales que superan los $30,000 USD.</div>
+        </div>
+        <div class="concl-item">
+          <div class="concl-dot"></div>
+          <div class="concl-text">Las tolerancias de impresión en PETG requirieron dos iteraciones dimensionales para lograr el ajuste correcto de rodamientos, lo que confirma la <strong style="color:#1A1208">necesidad de validación empírica</strong> en FDM.</div>
+        </div>
+
+        <div class="future-box">
+          <div class="fut-label">Trabajo Futuro</div>
+          Sustituir el ESC por un <strong>VESC</strong> para habilitar control bidireccional y retroalimentación de torque en tiempo real · Reducir el KV del motor o aumentar la relación de reducción para alcanzar los ~10 N·m requeridos.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER: Referencias + QR
+  ══════════════════════════════════════════════════ -->
+  <div class="footer-row">
+    <div class="refs">
+      <div style="color:var(--teal);font-family:var(--font-m);font-size:6px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Referencias</div>
+      <span>[1]</span> M. A. Gull, S. Bai y T. Bak, "A Review on Design of Upper Limb Exoskeletons," <em>Robotics</em>, vol. 9, no. 1, art. 16, 2020. &nbsp;·&nbsp;
+      <span>[2]</span> B. Kim y A. D. Deshpande, "Harmony with an anatomical shoulder mechanism," <em>Int. J. Robotics Research</em>, vol. 36, no. 4, pp. 414–435, 2017. &nbsp;·&nbsp;
+      <span>[3]</span> A. Ebrahimi, "Stuttgart Exo-Jacket," <em>Proc. 10th Int. Conf. on Human System Interactions</em>, Ulsan, 2017. &nbsp;·&nbsp;
+      <span>[4]</span> Hocoma AG, "ArmeoPower – Arm and Hand Rehabilitation Exoskeleton," ficha técnica, 2025. &nbsp;·&nbsp;
+      <span>[5]</span> Myomo Inc., "MyoPro Motion G," <em>Exoskeleton Report</em>, 2024. &nbsp;·&nbsp;
+      <span>[6]</span> Berkeley Humanoid Lite — Open-source 3D-printed Humanoid Robot. UC Berkeley. [En línea]. Disponible: https://lite.berkeley-humanoid.org/
+    </div>
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div class="qr-box">
+        <img src="Images\REPO-EXO.png" style="width:50px;height:50px;display:block;">
+      </div>
+      <div style="font-size:6px;color:var(--muted);text-align:center;">Repositorio<br>del proyecto</div>
+    </div>
+  </div>
+
+</body>
+</html>
